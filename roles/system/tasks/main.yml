@@ -7,7 +7,7 @@
   loop:
   - motd
   - exec
-  - incomming
+  - incoming
 
 - name: Update login banner
   ios_banner:
