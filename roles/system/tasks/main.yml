@@ -1,7 +1,6 @@
 ---
 ## Tasks for the network device system
 - name: Clear unneeded banners
-  hosts: Network
   ios_banner:
     banner: "{{ item }}"
     state: absent
@@ -11,7 +10,6 @@
   - incoming
 
 - name: Update login banner
-  hosts: Network
   ios_banner:
     banner: login
     text: |
@@ -26,7 +24,6 @@
       ---------------------------------------------------------
     state: present
 
-- name: Disable DNS 
-  hosts: Network
+- name: Disable DNS
   cisco.ios.ios.system:
     lookup_enabled: no
