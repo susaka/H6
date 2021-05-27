@@ -25,5 +25,5 @@
     state: present
 
 - name: Disable DNS
-  cisco.ios.ios.system:
+  ios_system:
     lookup_enabled: no
