@@ -15,11 +15,11 @@
     text: |
       ---------------------------------------------------------
       |
-      | Denne enhed tilhører JR-Byg - No unauthorized access!
+      | Denne enhed tilhoerer JR-Byg - No unauthorized access!
       |
       ---------------------------------------------------------
       |
-      | Du er logged ind på {{ inventory_hostname }}
+      | Du er logged ind paa {{ inventory_hostname }}
       |
       ---------------------------------------------------------
     state: present

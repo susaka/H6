@@ -8,3 +8,8 @@
   tasks:
     - import_role:
         name: system
+    
+
+    - name: Saving the new config
+      ios_config:
+        save_when: modified
