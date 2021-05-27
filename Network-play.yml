@@ -10,7 +10,7 @@
         name: system
     
     - import_role:
-      name: NTP
+        name: NTP
 
     - name: Saving the new config
       ios_config:
