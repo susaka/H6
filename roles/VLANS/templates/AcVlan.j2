@@ -1,0 +1,7 @@
+{% if 'AccSW' in group_names %}
+
+{% for key,value in vlans|dictsort %}
+vlan {{ value.id }}
+ name {{ key }}
+
+{% endif %}

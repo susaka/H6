@@ -12,6 +12,9 @@
     - import_role:
         name: NTP
 
+    - import_role:
+        name: VLANS
+
     - name: Saving the new config
       ios_config:
         save_when: modified

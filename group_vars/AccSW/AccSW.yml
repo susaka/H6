@@ -1,5 +1,3 @@
-dev_mang_int: vlan5
-
 vlans:
   NetworkDevices: { id: 5 }
   HR: { id: 10 }
@@ -9,4 +7,3 @@ vlans:
   Construction: { id: 50 }
   Engineers: { id: 60 }
   IoT: { id: 70 }
-  Servers: { id: 255 }
