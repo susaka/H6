@@ -19,7 +19,7 @@
       |
       ---------------------------------------------------------
       |
-      | Du er logged ind paa {{ inventory_hostname }}
+      | Du er logged ind paa {{ inventory_hostname }}, Biatch!
       |
       ---------------------------------------------------------
     state: present

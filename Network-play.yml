@@ -1,6 +1,6 @@
 ---
 
-- name: Cisco show version example
+- name: Setup af Cisco devices
   hosts: Network
   gather_facts: false
   connection: network_cli
