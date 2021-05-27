@@ -27,3 +27,20 @@
 - name: Disable DNS
   ios_system:
     lookup_enabled: no
+
+- name: Password-Encryption
+  ios_config:
+    lines:
+      - service password-encryption
+
+- name: configure log bugger
+  ios_logging:
+    dest: buffered
+    level: informational
+    state: present
+
+- name: Syslog
+  ios_logging:
+    dest: host
+    name: "{{ log_host }}"
+    state: present
