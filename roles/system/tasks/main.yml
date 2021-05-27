@@ -33,7 +33,7 @@
     lines:
       - service password-encryption
 
-- name: configure log bugger
+- name: configure log buffer
   ios_logging:
     dest: buffered
     level: informational
