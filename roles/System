@@ -1,0 +1,25 @@
+---
+## Tasks for the network device system
+- name: Clear unneeded banners
+  ios_banner:
+    banner: "{{ item }}"
+    state: absent
+  loop:
+  - motd
+  - exec
+  - incomming
+
+- name: Update login banner
+  ios_banner:
+    banner: login
+    text: |
+      ---------------------------------------------------------
+      |
+      | Denne enhed tilhører JR-Byg - No unauthorized access!
+      |
+      ---------------------------------------------------------
+      |
+      | Du er logged ind på {{ inventory_hostname }}
+      |
+      ---------------------------------------------------------
+    state: present
