@@ -1,17 +1,19 @@
 ---
 
 - name: Setup af Cisco devices
-  hosts: Network
   gather_facts: false
   connection: network_cli
 
   tasks:
     - import_role:
         name: system
+        hosts: Network
     
     - import_role:
         name: NTP
+        hosts: Network
 
     - name: Saving the new config
+      hosts: Network
       ios_config:
         save_when: modified
