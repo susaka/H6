@@ -44,3 +44,10 @@
     dest: host
     name: "{{ log_host }}"
     state: present
+
+- name: SSH only
+  ios_config:
+    lines:
+      - ip ssh version 2
+      - line vty 0 15
+      - transport input ssh
