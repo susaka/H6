@@ -8,8 +8,7 @@ interface vlan{{ value.id }}
    ip address {{ net_id }}{{ ip_on_subnet }} {{ net_mask }}
   standby version 2
   standby {{ value.id }} ip {{ ip_on_subnet }}{{ hsrp_vip|default('1') }}
-  {% if value.root == ansible_hostname %}
-  standby {{ value.id }} preempt delay minimum 300
+  {% if value.root == inventory_hostname %}
   standby {{ value.id }} priority 110
   {% endif %}
 {% endfor %}
