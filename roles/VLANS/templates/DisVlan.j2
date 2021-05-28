@@ -1,0 +1,18 @@
+{% if 'DisSW' in group_names %}
+
+{% for key,value in vlans|dictsort %}
+{% set net_id = value.subnet|regex_replace('(.*\.)(.*)$', '\\1') %}
+{% set net_mask = value.subnet|ipaddr('netmask') %}
+interface vlan{{ value.id }}
+   description {{ key }}
+   ip address {{ net_id }}{{ svi_host_id }} {{ net_mask }}
+  standby version 2
+  standby {{ value.id }} ip {{ ip_on_subnet }}{{ hsrp_vip|default('1') }}
+  {% if value.root == ansible_hostname %}
+  standby {{ value.id }} preempt delay minimum 300
+  standby {{ value.id }} priority 110
+  {% endif %}
+{% endfor %}
+
+{% endif %}
+{# source for inspiration https://enableconfig.wordpress.com/2017/05/28/ansible-automate-cisco-lan-deployment-part-2/ #}

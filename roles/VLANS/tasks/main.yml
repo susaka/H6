@@ -1,8 +1,8 @@
 ---
 
-- name: Create vlans on access switches
-  ios_config: 
-    src: templates/AcVlan.j2
+#- name: Create vlans on access switches
+#  ios_config: 
+#    src: templates/AcVlan.j2
 
 - name: Create vlans on Distrubations switches
   ios_config:
