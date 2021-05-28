@@ -7,7 +7,7 @@ interface vlan{{ value.id }}
    description {{ key }}
    ip address {{ net_id }}{{ ip_on_subnet }} {{ net_mask }}
   standby version 2
-  standby {{ value.id }} ip {{ ip_on_subnet }}{{ hsrp_vip|default('1') }}
+  standby {{ value.id }} ip {{ net_id }}{{ hsrp_vip|default('1') }}
   {% if value.root == inventory_hostname %}
   standby {{ value.id }} priority 110
   {% endif %}
