@@ -5,7 +5,7 @@
 {% set net_mask = value.subnet|ipaddr('netmask') %}
 interface vlan{{ value.id }}
    description {{ key }}
-   ip address {{ net_id }}{{ svi_host_id }} {{ net_mask }}
+   ip address {{ net_id }}{{ ip_on_subnet }} {{ net_mask }}
   standby version 2
   standby {{ value.id }} ip {{ ip_on_subnet }}{{ hsrp_vip|default('1') }}
   {% if value.root == ansible_hostname %}

@@ -28,6 +28,13 @@
   ios_system:
     lookup_enabled: no
 
+- name: Update local user password
+  ios_user:
+    name: FallbackAdmin
+    configured_password: cisco
+    update_password: always
+    state: present
+
 - name: Password-Encryption
   ios_config:
     lines:
