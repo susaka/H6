@@ -6,11 +6,11 @@
   connection: network_cli
 
   tasks:
-    - import_role:
-        name: system
+  #  - import_role:
+  #      name: system
     
-    - import_role:
-        name: NTP
+  #  - import_role:
+  #      name: NTP
 
     - import_role:
         name: VLANS
