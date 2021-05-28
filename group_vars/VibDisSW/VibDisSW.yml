@@ -3,7 +3,7 @@ vlans:
   HR: { id: 10, subnet: 10.10.8.0/24, root: VibDisSW01}
   Sales: { id: 20, subnet: 10.10.12.0/24, root: VibDisSW01 }
   Marketing: { id: 30, subnet: 10.10.16.0/24, root: VibDisSW01 }
-  Facility Management: { id: 40, subnet: 10.10.20.0/24, root: VibDisSW02 }
+  FacilityManagement: { id: 40, subnet: 10.10.20.0/24, root: VibDisSW02 }
   Construction: { id: 50, subnet: 10.10.24.0/24, root: VibDisSW02 }
   Engineers: { id: 60, subnet: 10.10.28.0/24, root: VibDisSW02 }
   IoT: { id: 70, subnet: 10.10.32.0/24, root: VibDisSW02 }

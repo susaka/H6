@@ -3,7 +3,7 @@ vlans:
   HR: { id: 10, subnet: 10.153.8.0/24, root: RosDisSW01}
   Sales: { id: 20, subnet: 10.153.12.0/24, root: RosDisSW01 }
   Marketing: { id: 30, subnet: 10.153.16.0/24, root: RosDisSW01 }
-  Facility Management: { id: 40, subnet: 10.153.20.0/24, root: RosDisSW02 }
+  FacilityManagement: { id: 40, subnet: 10.153.20.0/24, root: RosDisSW02 }
   Construction: { id: 50, subnet: 10.153.24.0/24, root: RosDisSW02 }
   Engineers: { id: 60, subnet: 10.153.28.0/24, root: RosDisSW02 }
   IoT: { id: 70, subnet: 10.153.32.0/24, root: RosDisSW02 }
