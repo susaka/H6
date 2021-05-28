@@ -1,12 +1,1 @@
 dev_mang_int: vlan5
-
-vlans:
-  NetworkDevices: { id: 5 }
-  HR: { id: 10 }
-  Sales: { id: 20 }
-  Marketing: { id: 30 }
-  Facility Management: { id: 40 }
-  Construction: { id: 50 }
-  Engineers: { id: 60 }
-  IoT: { id: 70 }
-  Servers: { id: 255 }
