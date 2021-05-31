@@ -2,4 +2,4 @@
 
 - name: Generate powershell script
   run_once: true
-  local_action: ./files/createPSscript.py
+  local_action: ./createPSscript.py
