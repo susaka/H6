@@ -2,7 +2,7 @@ $CurrentScopes = Get-DHCPserverV4Scope
 $changed = $false
 
 {% for key,value in scope1.vlans %}
-{% set net_host = value.subnet|ipaddr('host') %}
+{% set net_host = value.subnet|ipaddr('address') %}
 $subnet = {{scope.subnet}}
 if ($CurrentScopes -ne {{net_host}} )
 {
@@ -18,7 +18,7 @@ $changed = $true
 {% endfor %}
 
 {% for key,value in scope2.vlans %}
-{% set net_host = value.subnet|ipaddr('host') %}
+{% set net_host = value.subnet|ipaddr('address') %}
 $subnet = {{scope.subnet}}
 if ($CurrentScopes -ne {{net_host}} )
 {
