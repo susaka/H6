@@ -10,13 +10,13 @@
   #      name: system
     
   #  - import_role:
-  #      name: NTP
+  #     name: NTP
 
   #  - import_role:
-  #    name: VLANS
+  #     name: VLANS
 
     - import_role:
-      name: DHCP      
+        name: DHCP      
 
   #  - name: Saving the new config
   #    ios_config:
