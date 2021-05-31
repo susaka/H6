@@ -1,6 +1,5 @@
 ---
 
 - name: Generate powershell script
-  script: createPSscript.py
   run_once: true
-  delegate_to: 127.0.0.1
+  local_action: python3 ./files/createPSscript.py
