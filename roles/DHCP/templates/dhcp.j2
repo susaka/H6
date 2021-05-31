@@ -1,29 +1,33 @@
 $CurrentScopes = Get-DHCPserverV4Scope
 $changed = $false
 
-{% for scope in scope1.vlans %}
-if ($CurrentScopes -ne scope1.subnet)
+{% for key,value in scope1.vlans %}
+{% set net_host = value.subnet|ipaddr('host') %}
+$subnet = {{scope.subnet}}
+if ($CurrentScopes -ne {{net_host}} )
 {
-$startRange = scope.subnet.substring(0,scope.subnet.length-4) + "5"
-$slutrange = scope.subnet.substring(0,scope.subnet.length-4) + "254"
-$gateway = scope.subnet.substring(0,scope.subnet.length-4) + "1"
+$startRange = $subnet.substring($subnet.length-4) + "5"
+$slutrange = $subnet.substring($subnet.length-4) + "254"
+$gateway = $subnet.substring($subnet.length-4) + "1"
 
-Add-DhcpServerv4Scope -Name {{ scope }} -StartRange {{ "$startRange" }} -EndRange {{  "$slutrange" }}  -SubnetMask {{ "255.255.255.0" }} -State Active
-Set-DHCPServerv4OptionValue -ScopeName {{ scope }} -DnsServer {{ "10.255.0.10" }} -Router {{ "$gateway" }}
+Add-DhcpServerv4Scope -Name {{ key }} -StartRange $startRange -EndRange $slutrange -SubnetMask "255.255.255.0" -State Active
+Set-DHCPServerv4OptionValue -ScopeName {{ key }} -DnsServer "10.255.0.10" -Router $gateway
 
 $changed = $true
 }
 {% endfor %}
 
-{% for scope in scope2.vlans %}
-if ($CurrentScopes -ne scope2.subnet)
+{% for key,value in scope2.vlans %}
+{% set net_host = value.subnet|ipaddr('host') %}
+$subnet = {{scope.subnet}}
+if ($CurrentScopes -ne {{net_host}} )
 {
-$startRange = scope.subnet.substring(0,scope.subnet.length-4) + "5"
-$slutrange = scope.subnet.substring(0,scope.subnet.length-4) + "254"
-$gateway = scope.subnet.substring(0,scope.subnet.length-4) + "1"
+$startRange = $subnet.substring($subnet.length-4) + "5"
+$slutrange = $subnet.substring($subnet.length-4) + "254"
+$gateway = $subnet.substring($subnet.length-4) + "1"
 
-Add-DhcpServerv4Scope -Name {{ scope }} -StartRange {{ "$startRange" }} -EndRange {{  "$slutrange" }} -SubnetMask {{ "255.255.255.0" }} -State Active
-Set-DHCPServerv4OptionValue -ScopeName {{ scope2 }} -DnsServer {{ "10.255.0.10" }} -Router {{ "$gateway" }}
+Add-DhcpServerv4Scope -Name {{ key }} -StartRange $startRange -EndRange $slutrange -SubnetMask "255.255.255.0" -State Active
+Set-DHCPServerv4OptionValue -ScopeName {{ key }} -DnsServer "10.255.0.10" -Router $gateway
 
 $changed = $true
 }
