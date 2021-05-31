@@ -7,34 +7,35 @@ $changed = $false
 $subnet = {{value.subnet}}
 if ($CurrentScopes -ne {{net_host}} )
 {
+$name = "Vib_{{key}}"
 $startRange = $subnet.substring($subnet.length-4) + "5"
 $slutrange = $subnet.substring($subnet.length-4) + "254"
 $gateway = $subnet.substring($subnet.length-4) + "1"
 
-Add-DhcpServerv4Scope -Name {{ key }} -StartRange $startRange -EndRange $slutrange -SubnetMask "255.255.255.0" -State Active
-Set-DHCPServerv4OptionValue -ScopeName {{ key }} -DnsServer "10.255.0.10" -Router $gateway
+Add-DhcpServerv4Scope -Name $name -StartRange $startRange -EndRange $slutrange -SubnetMask "255.255.255.0" -State Active
+Set-DHCPServerv4OptionValue -ScopeName $name -DnsServer "10.255.0.10" -Router $gateway
 
 $changed = $true
 }
 {% endfor %}
 
-{#
+
 {% for key,value in scope2.vlans|dictsort %}
 {% set net_host = value.subnet | ipaddr('network') %}
-$subnet = {{scope.subnet}}
+$subnet = {{value.subnet}}
 if ($CurrentScopes -ne {{net_host}} )
 {
+$name = "Ros_{{key}}"
 $startRange = $subnet.substring($subnet.length-4) + "5"
 $slutrange = $subnet.substring($subnet.length-4) + "254"
 $gateway = $subnet.substring($subnet.length-4) + "1"
 
-Add-DhcpServerv4Scope -Name {{ key }} -StartRange $startRange -EndRange $slutrange -SubnetMask "255.255.255.0" -State Active
-Set-DHCPServerv4OptionValue -ScopeName {{ key }} -DnsServer "10.255.0.10" -Router $gateway
+Add-DhcpServerv4Scope -Name $name -StartRange $startRange -EndRange $slutrange -SubnetMask "255.255.255.0" -State Active
+Set-DHCPServerv4OptionValue -ScopeName $name -DnsServer "10.255.0.10" -Router $gateway
 
 $changed = $true
 }
 {% endfor %}
 
 echo $changed
-#}
 {# Inspiration hentet fra https://kontrolissues.net/2016/07/24/jinja2-and-powershell-automationish-microsoft-dhcp/ #}
