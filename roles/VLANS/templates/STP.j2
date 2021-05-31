@@ -1,0 +1,21 @@
+spanning-tree mode rapid-pvst
+
+{% if 'AccSW' in group_names %}
+
+
+
+{% endif %}
+
+{% if 'DisSW' in group_names %}
+
+{% for key,value in vlans|dictsort %}
+{% if value.root == inventory_hostname %}
+spanning-tree vlan {{ value.id }} priority 4096
+{% else %}
+spanning-tree vlan {{ value.id }} priority 8192
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
+{% endif %}

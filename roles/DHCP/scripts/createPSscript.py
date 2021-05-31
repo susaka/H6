@@ -1,0 +1,19 @@
+from jinja2 import Environment, FileSystemLoader, Template
+import yaml
+
+#Set file root to ansible root
+ENV = Environment(loader=FileSystemLoader('../../'))
+
+#Load the 2 used group vars YAML files
+with open("./group_vars/VibDisSW.yml") as inputfile:
+    scope1 =  yaml.load(inputfile)
+with open("./group_vars/RosDisSW.yml") as inputfile:
+    scope2 =  yaml.load(inputfile)
+
+#Get the template from the DHCP role template folder
+template = ENV.get_template("./roles/DHCP/templates/dhcp.j2")
+
+#write to file and save it at the role/script folder.
+with open("./roles/DHCP/scripts/final_dhcp.ps1", "w") as file:
+    file.write(template.render(scope1=scope1,scope2=scope2))
+

@@ -4,6 +4,10 @@
 #  ios_config: 
 #    src: templates/AcVlan.j2
 
-- name: Create vlans on Distrubations switches
+#- name: Create vlans on Distrubations switches
+#  ios_config:
+#    src: templates/DisVlan.j2
+
+- name: Setup STP and set root and backup root bridge on VLANs
   ios_config:
-    src: templates/DisVlan.j2
+    src: templates/STP.j2

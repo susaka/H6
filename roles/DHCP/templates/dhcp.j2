@@ -1,0 +1,34 @@
+$CurrentScopes = Get-DHCPserverV4Scope
+$changed = $false
+
+{% for scope1 in VibDisSW.vlans %}
+if ($CurrentScopes -ne scope.subnet)
+{
+$startRange = scope.subnet.substring(0,scope.subnet.length-4) + "5"
+$slutrange = scope.subnet.substring(0,scope.subnet.length-4) + "254"
+$gateway = scope.subnet.substring(0,scope.subnet.length-4) + "1"
+
+Add-DHCPServerv4Scope -EndRange {{  $slutrange }} -Name {{ scope }} -StartRange {{ $startRange }} -SubnetMask {{ "255.255.255.0" }} -State Active
+Set-DHCPServerv4OptionValue -ScopeName {{ scope }} -DnsServer {{ "10.255.0.10" }} -Router {{ $gateway }}
+
+$changed = $true
+}
+{% endif %}
+
+{% for scope2 in RosDisSW.vlans %}
+if ($CurrentScopes -ne scope.subnet)
+{
+$startRange = scope.subnet.substring(0,scope.subnet.length-4) + "5"
+$slutrange = scope.subnet.substring(0,scope.subnet.length-4) + "254"
+$gateway = scope.subnet.substring(0,scope.subnet.length-4) + "1"
+
+Add-DHCPServerv4Scope -EndRange {{  $slutrange }} -Name {{ scope }} -StartRange {{ $startRange }} -SubnetMask {{ "255.255.255.0" }} -State Active
+Set-DHCPServerv4OptionValue -ScopeName {{ scope }} -DnsServer {{ "10.255.0.10" }} -Router {{ $gateway }}
+
+$changed = $true
+}
+{% endif %}
+
+echo $changed
+
+{# Inspiration hentet fra https://kontrolissues.net/2016/07/24/jinja2-and-powershell-automationish-microsoft-dhcp/ #}
