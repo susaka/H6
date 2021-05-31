@@ -2,12 +2,12 @@ from jinja2 import Environment, FileSystemLoader, Template
 import yaml
 
 #Set file root to ansible root
-ENV = Environment(loader=FileSystemLoader('../../'))
+ENV = Environment(loader=FileSystemLoader('./'))
 
 #Load the 2 used group vars YAML files
-with open("./group_vars/VibDisSW.yml") as inputfile:
+with open("./group_vars/VibDisSW/VibDisSW.yml") as inputfile:
     scope1 =  yaml.load(inputfile)
-with open("./group_vars/RosDisSW.yml") as inputfile:
+with open("./group_vars/RosDisSW/RosDisSW.yml") as inputfile:
     scope2 =  yaml.load(inputfile)
 
 #Get the template from the DHCP role template folder

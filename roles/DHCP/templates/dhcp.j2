@@ -13,7 +13,7 @@ Set-DHCPServerv4OptionValue -ScopeName {{ scope }} -DnsServer {{ "10.255.0.10" }
 
 $changed = $true
 }
-{% endif %}
+{% endfor %}
 
 {% for scope2 in RosDisSW.vlans %}
 if ($CurrentScopes -ne scope.subnet)
@@ -27,7 +27,7 @@ Set-DHCPServerv4OptionValue -ScopeName {{ scope }} -DnsServer {{ "10.255.0.10" }
 
 $changed = $true
 }
-{% endif %}
+{% endfor %}
 
 echo $changed
 
