@@ -8,6 +8,6 @@
 #  ios_config:
 #    src: templates/DisVlan.j2
 
-- name: Setup STP and set root and backup root bridge on VLANs
-  ios_config:
-    src: templates/STP.j2
+#- name: Setup STP and set root and backup root bridge on VLANs
+#  ios_config:
+#    src: templates/STP.j2
