@@ -1,28 +1,28 @@
 $CurrentScopes = Get-DHCPserverV4Scope
 $changed = $false
 
-{% for scope1 in VibDisSW.vlans %}
+{% for scope in scope1.vlans %}
 if ($CurrentScopes -ne scope1.subnet)
 {
-$startRange = scope1.subnet.substring(0,scope1.subnet.length-4) + "5"
-$slutrange = scope1.subnet.substring(0,scope1.subnet.length-4) + "254"
-$gateway = scope1.subnet.substring(0,scope1.subnet.length-4) + "1"
+$startRange = scope.subnet.substring(0,scope.subnet.length-4) + "5"
+$slutrange = scope.subnet.substring(0,scope.subnet.length-4) + "254"
+$gateway = scope.subnet.substring(0,scope.subnet.length-4) + "1"
 
-Add-DhcpServerv4Scope -Name {{ scope1 }} -StartRange {{ "$startRange" }} -EndRange {{  "$slutrange" }}  -SubnetMask {{ "255.255.255.0" }} -State Active
-Set-DHCPServerv4OptionValue -ScopeName {{ scope1 }} -DnsServer {{ "10.255.0.10" }} -Router {{ "$gateway" }}
+Add-DhcpServerv4Scope -Name {{ scope }} -StartRange {{ "$startRange" }} -EndRange {{  "$slutrange" }}  -SubnetMask {{ "255.255.255.0" }} -State Active
+Set-DHCPServerv4OptionValue -ScopeName {{ scope }} -DnsServer {{ "10.255.0.10" }} -Router {{ "$gateway" }}
 
 $changed = $true
 }
 {% endfor %}
 
-{% for scope2 in RosDisSW.vlans %}
+{% for scope in scope2.vlans %}
 if ($CurrentScopes -ne scope2.subnet)
 {
-$startRange = scope2.subnet.substring(0,scope2.subnet.length-4) + "5"
-$slutrange = scope2.subnet.substring(0,scope2.subnet.length-4) + "254"
-$gateway = scope2.subnet.substring(0,scope2.subnet.length-4) + "1"
+$startRange = scope.subnet.substring(0,scope.subnet.length-4) + "5"
+$slutrange = scope.subnet.substring(0,scope.subnet.length-4) + "254"
+$gateway = scope.subnet.substring(0,scope.subnet.length-4) + "1"
 
-Add-DhcpServerv4Scope -Name {{ scope2 }} -StartRange {{ "$startRange" }} -EndRange {{  "$slutrange" }} -SubnetMask {{ "255.255.255.0" }} -State Active
+Add-DhcpServerv4Scope -Name {{ scope }} -StartRange {{ "$startRange" }} -EndRange {{  "$slutrange" }} -SubnetMask {{ "255.255.255.0" }} -State Active
 Set-DHCPServerv4OptionValue -ScopeName {{ scope2 }} -DnsServer {{ "10.255.0.10" }} -Router {{ "$gateway" }}
 
 $changed = $true
