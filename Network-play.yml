@@ -4,20 +4,16 @@
   hosts: Network
   gather_facts: false
   connection: network_cli
+  roles:
+    - system
+    - NTP
+    - VLANS
+    - SaveConfig
 
-  tasks:
-  #  - import_role:
-  #      name: system
-    
-  #  - import_role:
-  #     name: NTP
-
-  #  - import_role:
-  #     name: VLANS
-
-    - import_role:
-        name: DHCP      
-
-  #  - name: Saving the new config
-  #    ios_config:
-  #      save_when: modified
+- name: Setup DHCP
+  hosts: DHCP01
+  gather_facts: false
+  connection: winrm
+  roles:
+    - DHCP
+  

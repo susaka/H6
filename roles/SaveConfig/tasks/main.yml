@@ -1,0 +1,4 @@
+---
+- name: Saving the new config
+  ios_config:
+    save_when: modified
