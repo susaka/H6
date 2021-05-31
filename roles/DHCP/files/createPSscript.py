@@ -5,9 +5,9 @@ from ansible.plugins.filter import ipaddr
 #Set file root to ansible root
 ENV = Environment(loader=FileSystemLoader('./'))
 
-#Add the ipaddr filter to the environment
-f = ipaddr.FilterModule()
-ENV.filters.update(f.filters())
+#Add the ipaddr filter to the environment during troubleshooting.
+#f = ipaddr.FilterModule()
+#ENV.filters.update(f.filters())
 
 #Load the 2 used group vars YAML files
 with open("./group_vars/VibDisSW/VibDisSW.yml") as inputfile:
