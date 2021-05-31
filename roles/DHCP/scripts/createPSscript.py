@@ -20,5 +20,5 @@ template = ENV.get_template("./roles/DHCP/templates/dhcp.j2")
 
 #write to file and save it at the role/script folder.
 with open("./roles/DHCP/scripts/final_dhcp.ps1", "w") as file:
-    file.write(template.render(scope1=scope1,scope2=scope2))
+    file.write(template.render(scope1=scope1))
 
