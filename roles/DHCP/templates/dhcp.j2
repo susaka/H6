@@ -1,7 +1,7 @@
 $CurrentScopes = Get-DHCPserverV4Scope
 $changed = $false
 
-{% for key,value in scope1.vlans %}
+{% for key,value in scope1.vlans|dictsort %}
 {% set net_host = value.subnet | ipaddr('network') %}
 
 $subnet = {{scope.subnet}}
@@ -18,7 +18,8 @@ $changed = $true
 }
 {% endfor %}
 
-{% for key,value in scope2.vlans %}
+{#
+{% for key,value in scope2.vlans|dictsort %}
 {% set net_host = value.subnet | ipaddr('network') %}
 $subnet = {{scope.subnet}}
 if ($CurrentScopes -ne {{net_host}} )
@@ -35,5 +36,5 @@ $changed = $true
 {% endfor %}
 
 echo $changed
-
+#}
 {# Inspiration hentet fra https://kontrolissues.net/2016/07/24/jinja2-and-powershell-automationish-microsoft-dhcp/ #}
