@@ -8,8 +8,8 @@ $startRange = scope1.subnet.substring(0,scope1.subnet.length-4) + "5"
 $slutrange = scope1.subnet.substring(0,scope1.subnet.length-4) + "254"
 $gateway = scope1.subnet.substring(0,scope1.subnet.length-4) + "1"
 
-Add-DhcpServerv4Scope -Name {{ scope1 }} -StartRange {{ $startRange }} -EndRange {{  $slutrange }}  -SubnetMask {{ "255.255.255.0" }} -State Active
-Set-DHCPServerv4OptionValue -ScopeName {{ scope1 }} -DnsServer {{ "10.255.0.10" }} -Router {{ $gateway }}
+Add-DhcpServerv4Scope -Name {{ scope1 }} -StartRange {{ "$startRange" }} -EndRange {{  "$slutrange" }}  -SubnetMask {{ "255.255.255.0" }} -State Active
+Set-DHCPServerv4OptionValue -ScopeName {{ scope1 }} -DnsServer {{ "10.255.0.10" }} -Router {{ "$gateway" }}
 
 $changed = $true
 }
@@ -22,8 +22,8 @@ $startRange = scope2.subnet.substring(0,scope2.subnet.length-4) + "5"
 $slutrange = scope2.subnet.substring(0,scope2.subnet.length-4) + "254"
 $gateway = scope2.subnet.substring(0,scope2.subnet.length-4) + "1"
 
-Add-DhcpServerv4Scope -EndRange {{  $slutrange }} -Name {{ scope2 }} -StartRange {{ $startRange }} -SubnetMask {{ "255.255.255.0" }} -State Active
-Set-DHCPServerv4OptionValue -ScopeName {{ scope2 }} -DnsServer {{ "10.255.0.10" }} -Router {{ $gateway }}
+Add-DhcpServerv4Scope -Name {{ scope2 }} -StartRange {{ "$startRange" }} -EndRange {{  "$slutrange" }} -SubnetMask {{ "255.255.255.0" }} -State Active
+Set-DHCPServerv4OptionValue -ScopeName {{ scope2 }} -DnsServer {{ "10.255.0.10" }} -Router {{ "$gateway" }}
 
 $changed = $true
 }
