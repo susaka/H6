@@ -1,5 +1,6 @@
 from jinja2 import Environment, FileSystemLoader, Template
 import yaml
+from ansible.plugins.filter import ipaddr
 
 #Set file root to ansible root
 ENV = Environment(loader=FileSystemLoader('./'))
