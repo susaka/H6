@@ -1,4 +1,4 @@
 ---
 
 - name: Generate powershell script
-    command: ./scripts/createPSscript.py
+  script: createPSscript.py
