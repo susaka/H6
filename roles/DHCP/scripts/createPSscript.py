@@ -6,9 +6,9 @@ ENV = Environment(loader=FileSystemLoader('./'))
 
 #Load the 2 used group vars YAML files
 with open("./group_vars/VibDisSW/VibDisSW.yml") as inputfile:
-    scope1 =  yaml.load(inputfile)
+    scope1 =  yaml.full_load(inputfile)
 with open("./group_vars/RosDisSW/RosDisSW.yml") as inputfile:
-    scope2 =  yaml.load(inputfile)
+    scope2 =  yaml.full_load(inputfile)
 
 #Get the template from the DHCP role template folder
 template = ENV.get_template("./roles/DHCP/templates/dhcp.j2")
