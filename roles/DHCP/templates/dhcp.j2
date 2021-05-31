@@ -4,7 +4,7 @@ $changed = $false
 {% for key,value in scope1.vlans|dictsort %}
 {% set net_host = value.subnet | ipaddr('network') %}
 
-$subnet = {{scope.subnet}}
+$subnet = {{value.subnet}}
 if ($CurrentScopes -ne {{net_host}} )
 {
 $startRange = $subnet.substring($subnet.length-4) + "5"
