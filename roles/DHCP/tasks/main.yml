@@ -1,5 +1,8 @@
 ---
 
 - name: Generate powershell script
+  command: createPSscript.py
+  args:
+    chdir: '{{ role_path }}/files'
   run_once: true
-  local_action: ./createPSscript.py
+  delegate_to: 127.0.0.1
