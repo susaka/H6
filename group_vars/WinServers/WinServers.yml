@@ -1,4 +1,4 @@
-ansible_username: ansible
+ansible_user: ansible
 ansible_password: Password1!
 ansible_port: 5985
 ansible_connection: winrm
