@@ -28,7 +28,7 @@
     lines: 
     - switchport mode access
     - switchport access vlan 30
-    parents: {{ item }}
+    parents: "{{ item }}"
   loop:
     - interface FastEthernet0/9
     - interface FastEthernet0/10
