@@ -1,11 +1,13 @@
 ---
 ## Tasks for the network device system
-- name: SSH only
+- name: SSH Version 2
   ios_config:
-    lines:
-      - ip ssh version 2
-      - line vty 0 15
-      - transport input ssh
+    lines: ip ssh version 2
+
+- name: Set VTY lines to only SSH
+  ios_config:
+    lines: transport input ssh
+    parent: line vty 0 15
 
 - name: Clear unneeded banners
   ios_banner:
@@ -37,8 +39,7 @@
 
 - name: Password-Encryption
   ios_config:
-    lines:
-      - service password-encryption
+    lines: service password-encryption
 
 - name: configure log buffer
   ios_logging:
