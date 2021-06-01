@@ -1,5 +1,12 @@
 ---
 ## Tasks for the network device system
+- name: SSH only
+  ios_config:
+    lines:
+      - ip ssh version 2
+      - line vty 0 15
+      - transport input ssh
+
 - name: Clear unneeded banners
   ios_banner:
     banner: "{{ item }}"
@@ -45,9 +52,3 @@
     name: "{{ log_host }}"
     state: present
 
-- name: SSH only
-  ios_config:
-    lines:
-      - ip ssh version 2
-      - line vty 0 15
-      - transport input ssh

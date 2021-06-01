@@ -14,6 +14,3 @@ log_host: 10.255.0.70
 
 #NTP server
 NTP_host: 10.255.0.10
-
-#Shared secret for radius
-Radius_secret: BmEYRA3Y
