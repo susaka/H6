@@ -14,6 +14,8 @@
   connection: network_cli
   roles:
     - VLANS
+  tags:
+    VLANS
 
 - name: Save final config on Cisco devices
   hosts: Network
