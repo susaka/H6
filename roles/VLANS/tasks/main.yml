@@ -11,7 +11,12 @@
     - no shutdown
     - switchport mode access
     - switchport access vlan 255
-    parents: interface range FastEthernet0/1 - 4
+    parents: "{{ item }}"
+  loop:
+    - interface FastEthernet0/1
+    - interface FastEthernet0/2
+    - interface FastEthernet0/3
+    - interface FastEthernet0/4
   when: inventory_hostname in groups['AccSW']
 
 - name: Assign interfaces fa0/5 - 8 to VLAN 10
@@ -20,14 +25,19 @@
     - no shutdown
     - switchport mode access
     - switchport access vlan 10
-    parents: interface range FastEthernet0/5 - 8
+    parents: "{{ item }}"
+  loop:
+    - interface FastEthernet0/5
+    - interface FastEthernet0/6
+    - interface FastEthernet0/7
+    - interface FastEthernet0/8
   when: inventory_hostname in groups['AccSW']  
 
 - name: Assign interfaces fa0/9 - 12 to VLAN 20
   ios_config:
     lines: 
     - switchport mode access
-    - switchport access vlan 30
+    - switchport access vlan 20
     parents: "{{ item }}"
   loop:
     - interface FastEthernet0/9
