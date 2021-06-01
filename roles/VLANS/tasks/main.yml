@@ -14,6 +14,24 @@
     parents: interface range FastEthernet0/1 - 4
   when: inventory_hostname in groups['AccSW']
 
+- name: Assign interfaces fa0/5 - 8 to VLAN 10
+  ios_config:
+    lines: 
+    - no shutdown
+    - switchport mode access
+    - switchport access vlan 10
+    parents: interface range FastEthernet0/5 - 8
+  when: inventory_hostname in groups['AccSW']  
+
+- name: Assign interfaces fa0/9 - 12 to VLAN 20
+  ios_config:
+    lines: 
+    - no shutdown
+    - switchport mode access
+    - switchport access vlan 20
+    parents: interface range FastEthernet0/9 - 12
+  when: inventory_hostname in groups['AccSW']
+
 #- name: Create vlans on Distrubations switches
 #  ios_config:
 #    src: templates/DisVlan.j2
