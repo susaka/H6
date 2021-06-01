@@ -1,11 +1,13 @@
 $npsClients = Get-NpsRadiusClient
 $changed = $false
 
-{% for host.key in groups%}
-if($npsClients -ne {{ value }})
+{% for host in groups%}
+{% for key,value in host%}
+if($npsClients -ne {{ key }})
 {
-    New-NpsRadiusClient -address "{{ host.key.ansible_host }}" -name "{{ host.key }}" -sharedsecret "BmEYRA3Y"
+    New-NpsRadiusClient -address "{{ value.ansible_host }}" -name "{{ key }}" -sharedsecret "BmEYRA3Y"
     $changed = $true
 }
 
+{% endfor %}
 {% endfor %}
