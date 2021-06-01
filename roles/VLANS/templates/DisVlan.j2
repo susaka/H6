@@ -3,15 +3,15 @@
 {% for key,value in vlans|dictsort %}
 {% set net_id = value.subnet|regex_replace('(.*\.)(.*)$', '\\1') %}
 {% set net_mask = value.subnet|ipaddr('netmask') %}
-interface vlan{{ value.id }}
-   description {{ key }}
-   ip address {{ net_id }}{{ ip_on_subnet }} {{ net_mask }}
-  ip helper-address 10.255.0.20
-  standby version 2
-  standby {{ value.id }} ip {{ net_id }}{{ hsrp_vip|default('1') }}
-  {% if value.root == inventory_hostname %}
-  standby {{ value.id }} priority 110
-  {% endif %}
+interface Vlan{{ value.id }}
+ description {{ key }}
+ ip address {{ net_id }}{{ ip_on_subnet }} {{ net_mask }}
+ ip helper-address 10.255.0.20
+ standby version 2
+ standby {{ value.id }} ip {{ net_id }}{{ hsrp_vip|default('1') }}
+ {% if value.root == inventory_hostname %}
+ standby {{ value.id }} priority 110
+ {% endif %}
 {% endfor %}
 
 {% endif %}
