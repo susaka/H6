@@ -11,7 +11,7 @@
     - no shutdown
     - switchport mode access
     - switchport access vlan 255
-  parents: interface range FastEthernet0/1 - 4
+    parents: interface range FastEthernet0/1 - 4
   when: inventory_hostname in groups['AccSW']
 
 #- name: Create vlans on Distrubations switches
