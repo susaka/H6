@@ -11,8 +11,10 @@
   hosts: Network
   gather_facts: false
   connection: network_cli
+  roles:
+    - NTP
   tags:
-    - DHCP
+    - NTP
 
 - name: Setup of Cisco Switches
   hosts: Switches
