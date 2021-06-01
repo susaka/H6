@@ -17,7 +17,7 @@ $slutrange = $subnet.substring(0,$subnet.length-4) + "254"
 $gateway = $subnet.substring(0,$subnet.length-4) + "1"
 
 Add-DhcpServerv4Scope -Name $name -StartRange $startRange -EndRange $slutrange -SubnetMask "255.255.255.0" -State Active
-Set-DHCPServerv4OptionValue -ScopeName $name -DnsServer "10.255.0.10" -Router $gateway
+Set-DHCPServerv4OptionValue -ScopeID "{{net_host}}" -DnsServer "10.255.0.10" -Router $gateway
 
 $changed = $true
 }
@@ -39,7 +39,7 @@ $slutrange = $subnet.substring(0,$subnet.length-4) + "254"
 $gateway = $subnet.substring(0,$subnet.length-4) + "1"
 
 Add-DhcpServerv4Scope -Name $name -StartRange $startRange -EndRange $slutrange -SubnetMask "255.255.255.0" -State Active
-Set-DHCPServerv4OptionValue -ScopeName $name -DnsServer "10.255.0.10" -Router $gateway
+Set-DHCPServerv4OptionValue -ScopeID "{{net_host}}" -DnsServer "10.255.0.10" -Router $gateway
 
 $changed = $true
 }
