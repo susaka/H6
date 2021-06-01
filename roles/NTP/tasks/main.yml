@@ -1,7 +1,10 @@
 ---
 #tasks for setup NTP on all devices
 - name: Assign NTP server
-  ios_ntp:
-    server: "{{ NTP_host }}"
-    source_int: "{{ dev_mang_int }}"
-    state: present
+  ios_config:
+    lines: ntp server "{{ NTP_host }}"
+    
+
+- name: assign source interface
+  ios_config:
+    lines: ntp source "{{ dev_mang_int }}"
