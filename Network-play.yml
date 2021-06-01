@@ -5,10 +5,10 @@
   gather_facts: false
   connection: network_cli
   roles:
-    - system
+#    - system
     - NTP
-    - VLANS
-    - SaveConfig
+#    - VLANS
+#    - SaveConfig
   tags:
     - Cisco
     - NetworkDevices
@@ -16,15 +16,15 @@
 - name: Setup DHCP
   hosts: DHCP01
   gather_facts: false
-  roles:
-    - DHCP
+#  roles:
+#    - DHCP
   tags:
     - DHCP
 
 - name: Setup Radius clients
   hosts: Radius01
   gather_facts: false
-  roles:
-    - SetupRadius
+#  roles:
+#    - SetupRadius
   tags:
     - Radius
