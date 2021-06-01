@@ -1,16 +1,23 @@
 ---
 
-- name: Create vlans on access switches
-  ios_config: 
-    src: templates/AcVlan.j2
-    match: none
+#- name: Create vlans on access switches
+#  ios_config: 
+#    src: templates/AcVlan.j2
+#    match: none
 
-- name: Create vlans on Distrubations switches
-  ios_config:
-    src: templates/DisVlan.j2
-    match: none
+- name: Assign interfaces
+  raw: show clock
+  register: clock_result
 
-- name: Setup STP and set root and backup root bridge on VLANs
-  ios_config:
-    src: templates/STP.j2
-    match: none
+- name: show debug
+  debug: var=clock_result
+
+#- name: Create vlans on Distrubations switches
+#  ios_config:
+#    src: templates/DisVlan.j2
+#    match: none
+
+#- name: Setup STP and set root and backup root bridge on VLANs
+#  ios_config:
+#    src: templates/STP.j2
+#    match: none
