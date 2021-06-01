@@ -1,0 +1,27 @@
+---
+
+- name: apt-get update and upgrade
+  apt:
+    update_cache: yes
+    upgrade: yes
+    cache_valid_time: 86400
+
+- name: setup NTP server
+
+
+- name: setup syslog forwarding
+
+
+- name: Installing stuff for domain joining
+  apt:
+    name:
+    - realmd
+    - sssd
+    - sssd-tools
+    - libnss-sss
+    - libpam-sss
+    - adcli
+    - samba-common-bin
+
+- name: join domain
+  raw: 

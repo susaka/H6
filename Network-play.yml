@@ -39,3 +39,11 @@
     - DHCP
   tags:
     - DHCP
+
+- hosts: LinuxServers
+  become: true
+  become_user: root
+  roles:
+    - LinuxServerSetup
+  tags:
+    - Linux
