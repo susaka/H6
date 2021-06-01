@@ -5,13 +5,14 @@
 #    src: templates/AcVlan.j2
 #    match: none
 
-- name: Assign interfaces
-  ios_command:
-    commands:
-      - show clock
-  register: clock
-
-- debug: var=clock.stdout_lines
+- name: Assign interfaces fa0/1 - 4 to VLAN 255
+  ios_config:
+    lines: 
+    - no shutdown
+    - switchport mode access
+    - switchport access vlan 255
+  parents: interface range FastEthernet0/1 - 4
+  when: inventory_hostname in groups['AccSW']
 
 #- name: Create vlans on Distrubations switches
 #  ios_config:
