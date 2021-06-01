@@ -28,7 +28,7 @@
     lines: 
     - no shutdown
     - switchport mode access
-    - switchport access vlan 20
+    - switchport access vlan 30
     parents: interface FastEthernet0/{{ item }}
   loop:
     - 9
