@@ -7,7 +7,10 @@
 - name: Set VTY lines to only SSH
   ios_config:
     lines: transport input ssh
-    parent: line vty 0 15
+    parents: "{{ item }}"
+  loop:
+    - line vty 0 4
+    - line vty 5 15
 
 - name: Clear unneeded banners
   ios_banner:
