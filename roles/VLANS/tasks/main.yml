@@ -8,7 +8,6 @@
 - name: Assign interfaces fa0/1 - 4 to VLAN 255
   ios_config:
     lines: 
-    - no shutdown
     - switchport mode access
     - switchport access vlan 255
     parents: "{{ item }}"
@@ -22,7 +21,6 @@
 - name: Assign interfaces fa0/5 - 8 to VLAN 10
   ios_config:
     lines: 
-    - no shutdown
     - switchport mode access
     - switchport access vlan 10
     parents: "{{ item }}"
