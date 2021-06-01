@@ -26,15 +26,14 @@
 - name: Assign interfaces fa0/9 - 12 to VLAN 20
   ios_config:
     lines: 
-    - no shutdown
     - switchport mode access
     - switchport access vlan 30
-    parents: interface FastEthernet0/{{ item }}
+    parents: {{ item }}
   loop:
-    - 9
-    - 10
-    - 11
-    - 12
+    - interface FastEthernet0/9
+    - interface FastEthernet0/10
+    - interface FastEthernet0/11
+    - interface FastEthernet0/12
   when: inventory_hostname in groups['AccSW']
 
 #- name: Create vlans on Distrubations switches
