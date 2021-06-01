@@ -1,7 +1,6 @@
 $npsClients = Get-NpsRadiusClient
 $changed = $false
 
-{% if 'Network' in group_names%}
 {% for value in groups%}
 if($npsClients -ne {{ value }})
 {
@@ -10,4 +9,3 @@ if($npsClients -ne {{ value }})
 }
 
 {% endfor %}
-{% endif %}
