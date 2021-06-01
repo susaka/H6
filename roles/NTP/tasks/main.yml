@@ -8,3 +8,11 @@
 - name: assign source interface
   ios_config:
     lines: "{{ dev_mang_int }}"
+
+- name: Set timezone
+  ios_config:
+    lines: clock timezone CEST
+
+- name: Set Summertime
+  ios_config:
+    lines: clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00
