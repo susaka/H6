@@ -1,7 +1,7 @@
 $npsClients = Get-NpsRadiusClient
 $changed = $false
 
-{% for host in groups['']%}
+{% for host in groups%}
 {% if 'Network' in group_names %}
 if($npsClients -ne {{ host }})
 {
