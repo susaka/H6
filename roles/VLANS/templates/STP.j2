@@ -1,10 +1,7 @@
 spanning-tree mode rapid-pvst
-
-{% if 'AccSW' in group_names %}
-
-
-
-{% endif %}
+{#spanning-tree portfast edge default
+spanning-tree portfast edge bpduguard default
+#}
 
 {% if 'DisSW' in group_names %}
 
@@ -14,8 +11,6 @@ spanning-tree vlan {{ value.id }} priority 4096
 {% else %}
 spanning-tree vlan {{ value.id }} priority 8192
 {% endif %}
-{% endfor %}
-
 {% endfor %}
 
 {% endif %}

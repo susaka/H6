@@ -1,8 +1,16 @@
 ---
 
 - name: Generate powershell script
-  command: createPSscript.py
+  script: createPSscript.py
   args:
-    chdir: '{{ role_path }}/files'
+    executable: python3
   run_once: true
   delegate_to: 127.0.0.1
+
+- name: copy created script to remote server
+  win_copy:
+    src: final_dhcp.ps1
+    dest: C:\Temp\create dhcpScopes.ps1
+
+- name: Run powershell script on DHCP01
+  win_shell: C:\Temp\create dhcpScopes.ps1

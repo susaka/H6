@@ -1,5 +1,17 @@
 ---
 ## Tasks for the network device system
+- name: SSH Version 2
+  ios_config:
+    lines: ip ssh version 2
+
+- name: Set VTY lines to only SSH
+  ios_config:
+    lines: transport input ssh
+    parents: "{{ item }}"
+  loop:
+    - line vty 0 4
+    - line vty 5 15
+
 - name: Clear unneeded banners
   ios_banner:
     banner: "{{ item }}"
@@ -30,8 +42,7 @@
 
 - name: Password-Encryption
   ios_config:
-    lines:
-      - service password-encryption
+    lines: service password-encryption
 
 - name: configure log buffer
   ios_logging:
@@ -45,9 +56,3 @@
     name: "{{ log_host }}"
     state: present
 
-- name: SSH only
-  ios_config:
-    lines:
-      - ip ssh version 2
-      - line vty 0 15
-      - transport input ssh

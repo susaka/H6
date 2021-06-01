@@ -1,0 +1,79 @@
+---
+VibRouters:
+  hosts:
+    VibR1:
+      ansible_host: 10.10.4.1
+    VibR2:
+      ansible_host: 10.10.4.2
+
+RosRouters:
+  hosts:
+    RosR1:
+      ansible_host: 10.153.4.1
+    RosR2:
+      ansible_host: 10.153.4.2
+
+Routers:
+  children:
+    VibRouters:
+    RosRouters:
+
+VibDisSW:
+  hosts:
+    VibDisSW01:
+      ansible_host: 10.10.5.2
+    VibDisSW02:
+      ansible_host: 10.10.5.3
+
+RosDisSW:
+  hosts:
+    RosDisSW01:
+      ansible_host: 10.153.5.2
+    RosDisSW02:
+      ansible_host: 10.153.5.3
+
+DisSW:
+  children:
+    VibDisSW:
+    RosDisSW:
+
+VibAccSW:
+  hosts:
+    VibAcSW01:
+      ansible_host: 10.10.5.11
+
+RosAccSW:
+  hosts:
+    RosAcSW01:
+      ansible_host: 10.153.5.11
+
+AccSW:
+  children:
+    VibAccSW:
+    RosAccSW:
+
+Switches:
+  children:
+    DisSW:
+    AccSW:
+
+Network:
+  children:
+    Routers:
+    Switches:
+
+WinServers:
+  hosts:
+    DHCP01:
+      ansible_host: 10.255.0.20
+    Radius01:
+      ansible_host: 10.255.0.50
+
+LinuxServers:
+  hosts:
+    ansible01:
+      ansible_host: 10.255.0.60
+    log01:
+      ansible_host: 10.255.0.70
+    Monitor01:
+      ansible_host: 10.255.0.80
