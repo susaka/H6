@@ -4,7 +4,7 @@ $changed = $false
 {% for key,value in scope1.vlans|dictsort %}
 {% set net_host = value.subnet | ipaddr('network') %}
 
-$subnet = {{value.subnet}}
+$subnet = "{{value.subnet}}"
 if ($CurrentScopes.ScopeID.IPAddressToString -eq {{net_host}} )
 {
 write-host "{{ net_host }}" is allready a scope
@@ -26,7 +26,7 @@ $changed = $true
 
 {% for key,value in scope2.vlans|dictsort %}
 {% set net_host = value.subnet | ipaddr('network') %}
-$subnet = {{value.subnet}}
+$subnet = "{{value.subnet}}"
 if ($CurrentScopes.ScopeID.IPAddressToString -eq {{net_host}} )
 {
 write-host "{{ net_host }}" is allready a scope
