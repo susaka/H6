@@ -3,14 +3,14 @@
 - name: Create vlans on access switches
   ios_config: 
     src: templates/AcVlan.j2
-    match: line
+    match: none
 
 - name: Create vlans on Distrubations switches
   ios_config:
     src: templates/DisVlan.j2
-    match: line
+    match: none
 
 - name: Setup STP and set root and backup root bridge on VLANs
   ios_config:
     src: templates/STP.j2
-    match: line
+    match: none
