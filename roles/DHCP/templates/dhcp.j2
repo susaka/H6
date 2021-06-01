@@ -6,7 +6,9 @@ $changed = $false
 
 $subnet = {{value.subnet}}
 if ($CurrentScopes.ScopeID -eq {{net_host}} )
-{ write-host Scope for {{Net_host exist}}}
+{
+write-host "{{ net_host }}" is allready a scope
+}
 else
 {
 $name = "Vib_{{key}}"
@@ -26,8 +28,11 @@ $changed = $true
 {% set net_host = value.subnet | ipaddr('network') %}
 $subnet = {{value.subnet}}
 if ($CurrentScopesScopeID -eq {{net_host}} )
-{ write-host Scope for {{Net_host exist}}}
+{
+write-host "{{ net_host }}" is allready a scope
+}
 else
+{
 $name = "Ros_{{key}}"
 $startRange = $subnet.substring($subnet.length-4) + "5"
 $slutrange = $subnet.substring($subnet.length-4) + "254"
