@@ -1,9 +1,9 @@
 ---
 
-#- name: Create vlans on access switches
-#  ios_config: 
-#    src: templates/AcVlan.j2
-#    match: none
+- name: Create vlans on access switches
+  ios_config: 
+    src: templates/AcVlan.j2
+    match: none
 
 - name: Assign interfaces fa0/1 - 4 to VLAN 255
   ios_config:
@@ -16,7 +16,7 @@
     - interface FastEthernet0/2
     - interface FastEthernet0/3
     - interface FastEthernet0/4
-  when: inventory_hostname in groups['AccSW']
+  when: inventory_hostname in groups['VibAccSW']
 
 - name: Assign interfaces fa0/5 - 8 to VLAN 10
   ios_config:
@@ -44,12 +44,12 @@
     - interface FastEthernet0/12
   when: inventory_hostname in groups['AccSW']
 
-#- name: Create vlans on Distrubations switches
-#  ios_config:
-#    src: templates/DisVlan.j2
-#    match: none
+- name: Create vlans on Distrubations switches
+  ios_config:
+    src: templates/DisVlan.j2
+    match: none
 
-#- name: Setup STP and set root and backup root bridge on VLANs
-#  ios_config:
-#    src: templates/STP.j2
-#    match: none
+- name: Setup STP and set root and backup root bridge on VLANs
+  ios_config:
+    src: templates/STP.j2
+    match: none
