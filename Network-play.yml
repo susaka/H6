@@ -6,9 +6,9 @@
   connection: network_cli
   roles:
 #    - system
-    - NTP
-#    - VLANS
-#    - SaveConfig
+#    - NTP
+    - VLANS
+    - SaveConfig
   tags:
     - Cisco
     - NetworkDevices
