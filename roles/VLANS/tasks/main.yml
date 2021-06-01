@@ -6,11 +6,12 @@
 #    match: none
 
 - name: Assign interfaces
-  raw: show clock
-  register: clock_result
+  ios_command:
+    commands:
+      - show clock
+  register: clock
 
-- name: show debug
-  debug: var=clock_result
+- debug: var=clock.stdout_lines
 
 #- name: Create vlans on Distrubations switches
 #  ios_config:
