@@ -4,7 +4,7 @@ $changed = $false
 {% for host in groups['Network']%}
 if($npsClients -ne {{ inventory_hostname }})
 {
-    New-NpsRadiusClient -address "{{ hostvars[host].ansible_host }}" -name "{{ inventory_hostname }}" -sharedsecret "{{ Radius_secret }}"
+    New-NpsRadiusClient -address "{{ hostvars[host].ansible_host }}" -name "{{ inventory_hostname }}" -sharedsecret "BmEYRA3Y"
     $changed = $true
 }
 {% endfor %}
