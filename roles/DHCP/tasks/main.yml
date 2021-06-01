@@ -14,3 +14,5 @@
 
 - name: Run powershell script on DHCP01
   win_shell: C:\Temp\createDHCPScopes.ps1
+  register: result
+  changed_when: result.stdout_lines[0] == 'True'
