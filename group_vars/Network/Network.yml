@@ -13,4 +13,5 @@ ansible_become_password: "{{ vault_become_password }}"
 log_host: 10.255.0.70
 
 #NTP server
-NTP_host: 10.0.0.1
+NTP_host: 
+  - ntp server 10.0.0.1

@@ -1,1 +1,2 @@
-dev_mang_int: vlan5
+dev_mang_int: 
+- ntp source vlan5
