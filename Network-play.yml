@@ -9,11 +9,22 @@
     - NTP
     - VLANS
     - SaveConfig
+  tags:
+    - Cisco
+    - NetworkDevices
 
 - name: Setup DHCP
   hosts: DHCP01
   gather_facts: false
-  connection: winrm
   roles:
     - DHCP
-  
+  tags:
+    - DHCP
+
+- name: Setup Radius clients
+  hosts: Radius01
+  gather_facts: false
+  roles:
+    - SetupRadius
+  tags:
+    - Radius
