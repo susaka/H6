@@ -10,7 +10,7 @@
 - name: copy created script to remote server
   win_copy:
     src: final_dhcp.ps1
-    dest: C:\Temp\create dhcpScopes.ps1
+    dest: C:\Temp\createDHCPScopes.ps1
 
 - name: Run powershell script on DHCP01
-  win_shell: C:\Temp\create dhcpScopes.ps1
+  win_shell: C:\Temp\createDHCPScopes.ps1

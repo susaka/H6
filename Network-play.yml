@@ -27,7 +27,7 @@
 - name: Setup DHCP
   hosts: DHCP01
   gather_facts: false
-#  roles:
-#    - DHCP
+  roles:
+    - DHCP
   tags:
     - DHCP
