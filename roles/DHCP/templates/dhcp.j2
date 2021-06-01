@@ -5,7 +5,9 @@ $changed = $false
 {% set net_host = value.subnet | ipaddr('network') %}
 
 $subnet = {{value.subnet}}
-if ($CurrentScopes.ScopeID -ne {{net_host}} )
+if ($CurrentScopes.ScopeID -eq {{net_host}} )
+{ write-host Scope for {{Net_host exist}}}
+else
 {
 $name = "Vib_{{key}}"
 $startRange = $subnet.substring($subnet.length-4) + "5"
@@ -23,8 +25,9 @@ $changed = $true
 {% for key,value in scope2.vlans|dictsort %}
 {% set net_host = value.subnet | ipaddr('network') %}
 $subnet = {{value.subnet}}
-if ($CurrentScopesScopeID -ne {{net_host}} )
-{
+if ($CurrentScopesScopeID -eq {{net_host}} )
+{ write-host Scope for {{Net_host exist}}}
+else
 $name = "Ros_{{key}}"
 $startRange = $subnet.substring($subnet.length-4) + "5"
 $slutrange = $subnet.substring($subnet.length-4) + "254"
