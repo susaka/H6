@@ -1,2 +1,2 @@
 dev_mang_int: 
-  - ntp source loopback1
+  - ntp source Loopback1
