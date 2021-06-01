@@ -11,12 +11,7 @@
     - no shutdown
     - switchport mode access
     - switchport access vlan 255
-    parents: interface FastEthernet0/"{{ item }}"
-  loop:
-    - 1
-    - 2
-    - 3
-    - 4  
+    parents: interface range FastEthernet0/1 - 4
   when: inventory_hostname in groups['AccSW']
 
 - name: Assign interfaces fa0/5 - 8 to VLAN 10
@@ -24,13 +19,8 @@
     lines: 
     - no shutdown
     - switchport mode access
-    - switchport access vlan 30
-    parents: interface FastEthernet0/"{{ item }}"
-  loop:
-    - 5
-    - 6
-    - 7
-    - 8 
+    - switchport access vlan 10
+    parents: interface range FastEthernet0/5 - 8
   when: inventory_hostname in groups['AccSW']  
 
 - name: Assign interfaces fa0/9 - 12 to VLAN 20
@@ -38,12 +28,13 @@
     lines: 
     - no shutdown
     - switchport mode access
-    parents: interface FastEthernet0/"{{ item }}"
+    - switchport access vlan 20
+    parents: interface FastEthernet0/{{ item }}
   loop:
     - 9
     - 10
     - 11
-    - 12 
+    - 12
   when: inventory_hostname in groups['AccSW']
 
 #- name: Create vlans on Distrubations switches
