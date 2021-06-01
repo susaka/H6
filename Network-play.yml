@@ -1,17 +1,26 @@
 ---
 
-- name: Setup af Cisco devices
+- name: Setup of generel parametres on Cisco devices
   hosts: Network
   gather_facts: false
   connection: network_cli
   roles:
-#    - system
-#    - NTP
+    - system
+    - NTP
+
+- name: Setup of Cisco Switches
+  hosts: Switches
+  gather_facts: false
+  connection: network_cli
+  roles:
     - VLANS
+
+- name: Save final config on Cisco devices
+  hosts: Network
+  gather_facts: false
+  connection: network_cli
+  roles:
     - SaveConfig
-  tags:
-    - Cisco
-    - NetworkDevices
 
 - name: Setup DHCP
   hosts: DHCP01
