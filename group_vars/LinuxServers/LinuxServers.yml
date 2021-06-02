@@ -1,7 +1,7 @@
 ---
 
-ssh_user: "{{ vault_local_linux_user }}"
-ssh_pass: "{{ vault_local_linux_pass }}"
+ansible_ssh_user: "{{ vault_local_linux_user }}"
+ansible_ssh_pass: "{{ vault_local_linux_pass }}"
 
 domain: JR-byg.dk
 domainUser: "{{ vault_domain_user }}"
