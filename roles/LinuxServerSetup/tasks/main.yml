@@ -95,7 +95,7 @@
 - name: setup syslog client for forwarding
   blockinfile:
     path: /etc/rsyslog.conf
-    marker: "< The following is managed by ansible >"
+    marker: "#< The following is managed by ansible >#"
     block: |
       ##Enable sending of logs over UDP
       *.* @{{ syslog_host }}:514
