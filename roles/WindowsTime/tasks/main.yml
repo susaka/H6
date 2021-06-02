@@ -1,6 +1,6 @@
 ---
 
 - name: set timezone
-  win_powershell:
+  ansible.windows.win_powershell:
     script: |
       Set-TimeZone -id "Romance Standard Time"
