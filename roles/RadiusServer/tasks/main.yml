@@ -3,4 +3,4 @@
 - name: Gather facts
   debug: msg="{{ item }}"
   with_items:
-    - "{{ groups['Network'] }}" 
+    - "{{ groups['Network']['host'] }}" 
