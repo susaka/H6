@@ -6,22 +6,46 @@
     upgrade: yes
     cache_valid_time: 86400
 
-- name: setup NTP server
-
-
-- name: setup syslog forwarding
-
-
-- name: Installing stuff for domain joining
+- name: Setup and configure NTP
   apt:
-    name:
-    - realmd
-    - sssd
-    - sssd-tools
-    - libnss-sss
-    - libpam-sss
-    - adcli
-    - samba-common-bin
+    name: apt
+    state: present
 
-- name: join domain
-  raw: 
+- name: setup NTP client
+  lineinfile:
+    path: /etc/ntp.conf
+    search_string: 'pool 0.ubuntu.pool.ntp.org iburst'
+    line: {{ NTP_host }}
+
+- name: remove unused NTP servers
+  lineinfile:
+    path: /etc/ntp.conf
+    search_string: 'pool {{ item }}.ubuntu.pool.ntp.org iburst'
+    state: absent
+  loop:
+    - 1
+    - 2
+    - 3
+
+- name: enable and start NTP daemon
+  systemd:
+    name: ntp
+    enabled: yes
+    state: started
+
+#- name: setup syslog forwarding
+#
+#
+#- name: Installing stuff for domain joining
+#  apt:
+#    name:
+#    - realmd
+#    - sssd
+#    - sssd-tools
+#    - libnss-sss
+#    - libpam-sss
+#    - adcli
+#    - samba-common-bin
+
+#- name: join domain
+#  raw: 
