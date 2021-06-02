@@ -6,10 +6,12 @@
     upgrade: yes
     cache_valid_time: 86400
 
-- name: setup NTP client
+- name: install NTP client
   apt:
     name: ntp
     state: present
+
+- name: config NTP servers
   lineinfile:
     path: /etc/ntp.conf
     regexp: "pool 0.ubuntu.pool.ntp.org iburst"
