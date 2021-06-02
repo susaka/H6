@@ -9,5 +9,4 @@ domainUser: "{{ vault_domain_user }}"
 domainPasword: "{{ vault_domain_pass }}"
 
 #NTP server
-NTP_host: 
-  - ntp server 10.0.0.1
+NTP_host: server 10.0.0.1
