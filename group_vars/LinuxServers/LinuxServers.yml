@@ -8,5 +8,5 @@ domain: JR-byg.dk
 domainUser: "{{ vault_domain_user }}"
 domainPasword: "{{ vault_domain_pass }}"
 
-#NTP server
+syslog_host: 10.255.0.70
 NTP_host: server 10.0.0.1

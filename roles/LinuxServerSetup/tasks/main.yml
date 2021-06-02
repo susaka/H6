@@ -34,8 +34,6 @@
     enabled: yes
     state: started
 
-#- name: setup syslog forwarding
-
 - name: Installing stuff for domain joining
   apt:
     name:
@@ -68,6 +66,12 @@
     line: "use_fully_qualified_names = False"
     state: present
 
+- name: restart sssd daemon    
+  systemd:
+    name: sssd
+    daemon_reload: yes
+  changed_when: false
+
 - name: enable home dirs
   lineinfile:
     path: /etc/pam.d/common-session
@@ -82,3 +86,30 @@
   loop:
     - 'user ALL=(ALL) ALL'
     - '%Domain\ Admins ALL=(ALL) ALL'
+
+- name: install syslog client if not present
+  apt:
+    name:
+    - rsyslog
+
+- name: setup syslog client for forwarding
+  blockinfile:
+    path: /etc/rsyslog.conf
+    marker: "< The following is managed by ansible >"
+    block: |
+      ##Enable sending of logs over UDP
+      *.* @{{ syslog_host }}:514
+      ##Enable sending of logs over TCP
+      *.* @@{{ syslog_host }}:514
+      ##Set disk queue when rsyslog server is down:
+      $ActionQueueFileName queue
+      $ActionQueueMaxDiskSpace 1g
+      $ActionQueueSaveOnShutdown on
+      $ActionQueueType LinkedList
+      $ActionResumeRetryCount -1
+
+- name: restart syslog daemon
+  systemd:
+    name: rsyslog
+    daemon_reload: yes
+  changed_when: false
