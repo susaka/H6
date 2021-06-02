@@ -3,7 +3,7 @@
 - name: set timezone
   ansible.windows.win_powershell:
     script: |
-      if ((Get-TimeZone).id -ne "ansible-galaxy collection install ansible.windows")
+      if ((Get-TimeZone).id -ne "Romance Standard Time")
       {
         Set-TimeZone -id "Romance Standard Time"
         $ansible.Changed = $true
