@@ -3,4 +3,4 @@
 - name: Gather facts
   debug: 
     msg: "{{ ansible_ssh_host }}"
-  loop: "{{ groups['Network'] }}"
+  with_items: "{{ groups['Network'] }}"
