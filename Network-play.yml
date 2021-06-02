@@ -40,9 +40,11 @@
   tags:
     - DHCP
 
-- hosts: LinuxServers
-  become: true
-  become_user: root
+- name: setup default settings on Linux Servers
+  hosts: LinuxServers
+  gather_facts: false
+  become: yes
+  become_method: sudo
   roles:
     - LinuxServerSetup
   tags:
