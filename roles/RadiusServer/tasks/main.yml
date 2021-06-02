@@ -1,7 +1,6 @@
 ---
 
 - name: Gather facts
-  debug: msg="{{ hostvars['{{item}}'] }}"
-  loop:
-    with_items:
-      - "{{ groups['Network'] }}" 
+  debug: msg="{{ hostvars['"{{ item }}"'] }}"
+  with_items:
+    - "{{ groups['Network'] }}" 
