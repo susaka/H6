@@ -50,6 +50,7 @@
 - name: check if domain joined
   command: /bin/bash -c "/usr/sbin/realm list"
   register: realm_list_results
+  changed_when: false
 
 - name: join domain if not joined
   expect:
@@ -71,15 +72,13 @@
   lineinfile:
     path: /etc/pam.d/common-session
     line: session optional pam_mkhomedir.so skel=/etc/skel umask=077
-    insertafter: EOF 
-    become: true
-    state: present
 
 - name: enable sudo for domain admins
   lineinfile:
     path: /etc/sudoers.d/admins
     line: "{{ item }}"
     create: yes
+    state: present
   loop:
     - 'user ALL=(ALL) ALL'
     - '%Domain\ Admins ALL=(ALL) ALL'
