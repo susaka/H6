@@ -15,7 +15,7 @@
   lineinfile:
     path: /etc/ntp.conf
     search_string: 'pool 0.ubuntu.pool.ntp.org iburst'
-    line: {{ NTP_host }}
+    line: "{{ NTP_host }}"
 
 - name: remove unused NTP servers
   lineinfile:
