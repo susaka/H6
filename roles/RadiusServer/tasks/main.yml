@@ -1,6 +1,6 @@
 ---
 
 - name: Gather facts
-  debug: msg="{{ item }}""
+  debug: msg="{{ item }}"
   with_items:
     - "{{ groups['Network'] }}" 
