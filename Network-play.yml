@@ -54,6 +54,6 @@
   hosts: Radius01
   gather_facts: false
   roles:
-    RadiusServer
+    - RadiusServer
   tags:
-    Radius
+    - Radius
