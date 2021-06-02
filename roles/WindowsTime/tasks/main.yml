@@ -3,9 +3,9 @@
 - name: set timezone
   ansible.windows.win_powershell:
     script: |
-      if ((Get-TimeZone).id -ne "Romance Standard Time")
+      if ((Get-TimeZone).id -ne "Samoa Standard Time")
       {
-        Set-TimeZone -id "Romance Standard Time"
+        Set-TimeZone -id "Samoa Standard Time"
         $ansible.Changed = $true
       }
       else
