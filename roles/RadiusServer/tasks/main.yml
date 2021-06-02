@@ -1,6 +1,0 @@
----
-
-- name: Gather facts
-  debug: 
-    msg: "{{ ansible_ssh_host }}"
-  with_items: "{{ groups['Network'] }}"
