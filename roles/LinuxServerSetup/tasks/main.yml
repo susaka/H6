@@ -14,14 +14,14 @@
 - name: setup NTP client
   lineinfile:
     path: /etc/ntp.conf
-    search_string: 'pool 0.ubuntu.pool.ntp.org iburst'
+    regexp: '^pool\s 0\.ubuntu\.pool\.ntp\.org\s iburst'
     line: "{{ NTP_host }}"
     state: present
 
 - name: remove unused NTP servers
   lineinfile:
     path: /etc/ntp.conf
-    search_string: 'pool {{ item }}.ubuntu.pool.ntp.org iburst'
+    regexp: '^pool\s {{ item }}\.ubuntu\.pool\.ntp\.org\s iburst'
     state: absent
   loop:
     - 1
