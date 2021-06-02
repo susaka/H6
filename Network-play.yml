@@ -49,3 +49,11 @@
     - LinuxServerSetup
   tags:
     - Linux
+
+- name: Setup DHCP
+  hosts: WinServers
+  gather_facts: false
+  roles:
+    - WindowsTime
+  tags:
+    - WindowsTime

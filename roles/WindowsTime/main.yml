@@ -1,0 +1,5 @@
+---
+
+- name: set timezone
+  win_script: |
+    Set-TimeZone -id "Romance Standard Time"
