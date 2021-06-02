@@ -6,12 +6,10 @@
     upgrade: yes
     cache_valid_time: 86400
 
-- name: Setup and configure NTP
+- name: setup NTP client
   apt:
     name: ntp
     state: present
-
-- name: setup NTP client
   lineinfile:
     path: /etc/ntp.conf
     regexp: "pool 0.ubuntu.pool.ntp.org iburst"
@@ -35,18 +33,51 @@
     state: started
 
 #- name: setup syslog forwarding
-#
-#
-#- name: Installing stuff for domain joining
-#  apt:
-#    name:
-#    - realmd
-#    - sssd
-#    - sssd-tools
-#    - libnss-sss
-#    - libpam-sss
-#    - adcli
-#    - samba-common-bin
 
-#- name: join domain
-#  raw: 
+- name: Installing stuff for domain joining
+  apt:
+    name:
+    - realmd
+    - sssd
+    - sssd-tools
+    - libnss-sss
+    - libpam-sss
+    - adcli
+    - samba-common-bin
+
+- name: check if domain joined
+  command: /bin/bash -c "/usr/sbin/realm list"
+  register: realm_list_results
+
+- name: join domain if not joined
+  expect:
+    command: /bin/bash -c "/usr/sbin/realm join {{ domain }} --user={{ domainUser }}"
+    responses:
+      (?i)Password: "{{ domainPasword }}"  
+  ignore_errors: yes
+  when: realm_list_results.stdout == ""
+  become: true
+
+- name: edit sssd config
+  lineinfile:
+    path: /etc/sssd/sssd.conf
+    regexp: "use_fully_qualified_names = True"
+    line: "use_fully_qualified_names = False"
+    state: present
+
+- name: enable home dirs
+  lineinfile:
+    path: /etc/pam.d/common-session
+    line: session optional pam_mkhomedir.so skel=/etc/skel umask=077
+    insertafter: EOF 
+    become: true
+    state: present
+
+- name: enable sudo for domain admins
+  lineinfile:
+    path: /etc/sudoers.d/admins
+    line: "{{ item }}"
+    create: yes
+  loop:
+    - 'user ALL=(ALL) ALL'
+    - '%Domain\ Admins ALL=(ALL) ALL'
