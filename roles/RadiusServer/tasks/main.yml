@@ -1,6 +1,6 @@
 ---
 
 - name: Gather facts
-  debug: msg="{{ hostvars['"{{ item }}"'] }}"
+  debug: msg="{{ hostvars['"{{ item }}"']['ansible_host'] }}"
   with_items:
     - "{{ groups['Network'] }}" 
