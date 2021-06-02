@@ -8,7 +8,7 @@
 
 - name: Setup and configure NTP
   apt:
-    name: apt
+    name: ntp
     state: present
 
 - name: setup NTP client
@@ -16,6 +16,7 @@
     path: /etc/ntp.conf
     search_string: 'pool 0.ubuntu.pool.ntp.org iburst'
     line: "{{ NTP_host }}"
+    state: present
 
 - name: remove unused NTP servers
   lineinfile:
