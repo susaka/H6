@@ -50,10 +50,10 @@
   tags:
     - Linux
 
-#- name: Setup Radius clients
-#  hosts: Radius01
-#  gather_facts: false
-#  roles:
-#    RadiusServer
-#  tags:
-#    Radius
+- name: Setup Radius clients
+  hosts: Radius01
+  gather_facts: false
+  roles:
+    RadiusServer
+  tags:
+    Radius

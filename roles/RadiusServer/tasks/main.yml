@@ -1,6 +1,6 @@
 ---
 
 - name: Gather facts
-  ios_fact:
-  gather_network_resources: "{{ dev_mang_int }}"
-  
+  debug: msg="{{ item }}""
+  with_items:
+    - "{{ groups['Network'] }}" 
