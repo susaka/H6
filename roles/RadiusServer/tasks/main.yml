@@ -1,6 +1,6 @@
 ---
 
 - name: Gather facts
-  debug: msg="{{ ansible_hostname }}:{{ ansible_default_ipv4.address }}"
+  debug: msg="{{ hostvars['{{item}}'] }}":"{{ hostvars['{{item}}']['ansible_host'] }}"
   with_items:
     - "{{ groups['Network'] }}" 
