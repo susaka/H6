@@ -107,6 +107,7 @@
       $ActionQueueSaveOnShutdown on
       $ActionQueueType LinkedList
       $ActionResumeRetryCount -1
+  changed_when: false
 
 - name: restart syslog daemon
   systemd:
