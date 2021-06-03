@@ -13,6 +13,8 @@ interface Vlan{{ value.id }}
  standby {{ value.id }} priority 110
  {% endif %}
  no shutdown
+Vlan{{ value.id }}
+no shutdown
 {% endfor %}
 
 {% endif %}
