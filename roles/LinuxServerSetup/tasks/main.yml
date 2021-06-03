@@ -68,7 +68,7 @@
 
 - name: restart sssd daemon    
   systemd:
-    name: sssd
+    name: sssd.service
     daemon_reload: yes
   changed_when: false
 
