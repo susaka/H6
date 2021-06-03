@@ -8,10 +8,10 @@
   ios_config:
     lines: "{{ ntp_source }}"
 
-- name: Assign NTP Source interface
+- name: Set timezone
   ios_config:
     lines: clock timezone CEST 1
 
-- name: Assign NTP Source interface
+- name: Set summer time
   ios_config:
     lines: clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00

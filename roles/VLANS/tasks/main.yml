@@ -4,6 +4,7 @@
   ios_config: 
     src: templates/AcVlan.j2
     match: none
+  changed_when: False
 
 - name: config trunk on Distribution switches
   ios_config:
@@ -60,8 +61,10 @@
   ios_config:
     src: templates/DisVlan.j2
     match: none
+  changed_when: False
 
 - name: Setup STP and set root and backup root bridge on VLANs
   ios_config:
     src: templates/STP.j2
     match: none
+  changed_when: False

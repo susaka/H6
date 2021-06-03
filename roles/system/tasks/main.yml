@@ -68,6 +68,7 @@
   ios_config:
     src: templates/radius.j2
     match: none
+  changed_when: False
 
 - name: apply on vty lines
   ios_config:
