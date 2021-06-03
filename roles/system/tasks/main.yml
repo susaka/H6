@@ -72,7 +72,6 @@
 - name: set source interface
   ios_config:
     lines: ip radius source-interface {{ dev_mang_int }}
-    parents: aaa group server radius JRradius
 
 - name: Config Radius AAA
   ios_config:
