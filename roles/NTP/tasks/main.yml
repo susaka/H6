@@ -3,5 +3,4 @@
 - name: Assign NTP server
   ios_config:
     src: templates/ntp.j2
-    lines: "{{ NTP_host }}"
-    match: none
+    match: lines
