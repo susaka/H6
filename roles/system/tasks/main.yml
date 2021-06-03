@@ -67,9 +67,9 @@
 - name: setup radius server group
   ios_config:
     lines:
-    - "server-private {{ radius_host }} auth-port 1645 acct-port 1646 key {{ vault_radius_shared_secret }}"
+    - aaa group server radius JRradius
+    - server-private {{ radius_host }} auth-port 1645 acct-port 1646 key {{ vault_radius_shared_secret }}
     - ip radius source-interface {{ dev_mang_int }}
-    parents: aaa group server radius JRradius
 
 - name: Config Radius AAA
   ios_config:
