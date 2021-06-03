@@ -7,6 +7,7 @@ interface Vlan{{ value.id }}
  description {{ key }}
  ip address {{ net_id }}{{ ip_on_subnet }} {{ net_mask }}
  ip helper-address 10.255.0.20
+ ip ospf 1 area {{value.area}}
  standby version 2
  standby {{ value.id }} ip {{ net_id }}{{ hsrp_vip|default('1') }}
  {% if value.root == inventory_hostname %}
