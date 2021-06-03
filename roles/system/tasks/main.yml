@@ -67,6 +67,7 @@
 - name: setup radius server group
   ios_config:
     src: templates/radius.j2
+    match: none
 
 - name: apply on vty lines
   ios_config:
