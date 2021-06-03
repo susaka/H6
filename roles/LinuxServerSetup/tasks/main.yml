@@ -3,7 +3,7 @@
 - name: apt-get update and upgrade
   apt:
     update_cache: yes
-    upgrade: yes
+    upgrade: safe
     cache_valid_time: 86400
 
 - name: install NTP client

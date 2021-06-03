@@ -12,6 +12,7 @@ interface Vlan{{ value.id }}
  {% if value.root == inventory_hostname %}
  standby {{ value.id }} priority 110
  {% endif %}
+ no shutdown
 {% endfor %}
 
 {% endif %}
