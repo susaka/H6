@@ -2,17 +2,6 @@
 #tasks for setup NTP on all devices
 - name: Assign NTP server
   ios_config:
+    src: templates/ntp.j2
     lines: "{{ NTP_host }}"
-    
-
-- name: assign source interface
-  ios_config:
-    lines: "{{ntp_source}}"
-
-- name: Set timezone
-  ios_config:
-    lines: clock timezone CEST 1
-
-- name: Set Summertime
-  ios_config:
-    lines: clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00
+    match: lines
