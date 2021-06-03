@@ -16,5 +16,6 @@ log_host: 10.255.0.70
 NTP_host: 
   - ntp server 10.0.0.1
 
-#Radius shared secret
+#Radius
+radius_host: 10.255.0.40
 radius_shared_secret: "{{ vault_radius_shared_secret }}"
