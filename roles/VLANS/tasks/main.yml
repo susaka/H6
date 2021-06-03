@@ -8,11 +8,11 @@
 - name: config trunk on Distribution switches
   ios_config:
     lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan 5,10,20,30,40,50,60,70,255
-      - switchport mode trunk
-  parents: "{{ item }}"
-  loop: 
+    - switchport trunk encapsulation dot1q
+    - switchport trunk allowed vlan 5,10,20,30,40,50,60,70,255
+    - switchport mode trunk
+    parents: "{{ item }}"
+  with_items: 
     - interface FastEthernet0/3
     - interface FastEthernet0/24
   when: inventory_hostname in groups['DisSW']
