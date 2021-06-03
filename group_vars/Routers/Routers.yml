@@ -1,4 +1,5 @@
+---
 dev_mang_int: 
   - Loopback1
 
-  radius_source: ip radius source-interface Loopback1
+radius_source: ip radius source-interface Loopback1
