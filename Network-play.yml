@@ -3,7 +3,6 @@
 - name: Setup of generel parametres on Cisco devices
   hosts: Network
   gather_facts: false
-  connection: network_cli
   roles:
     - system
   tags:
@@ -12,7 +11,6 @@
 - name: Setup time configuration on Cisco devices
   hosts: Network
   gather_facts: false
-  connection: network_cli
   roles:
     - NTP
   tags:
@@ -21,7 +19,6 @@
 - name: Setup of Cisco Switches
   hosts: Switches
   gather_facts: false
-  connection: network_cli
   roles:
     - VLANS
   tags:
@@ -30,7 +27,6 @@
 - name: Save final config on Cisco devices
   hosts: Network
   gather_facts: false
-  connection: network_cli
   roles:
     - SaveConfig
 
@@ -45,14 +41,12 @@
 - name: setup default settings on Linux Servers
   hosts: LinuxServers
   gather_facts: false
-  become: yes
-  become_method: sudo
   roles:
     - LinuxServerSetup
   tags:
     - Linux
 
-- name: Setup DHCP
+- name: Setup Timezones on WIndows
   hosts: WinServers
   gather_facts: false
   roles:

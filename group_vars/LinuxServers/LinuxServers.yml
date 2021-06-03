@@ -3,6 +3,8 @@
 ansible_ssh_user: "{{ vault_local_linux_user }}"
 ansible_ssh_pass: "{{ vault_local_linux_pass }}"
 ansible_become_pass: "{{ vault_local_linux_pass }}"
+become: yes
+become_method: sudo
 
 domain: JR-byg.dk
 domainUser: "{{ vault_domain_user }}"
