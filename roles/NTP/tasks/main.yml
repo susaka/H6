@@ -3,4 +3,4 @@
 - name: Assign NTP server
   ios_config:
     src: templates/ntp.j2
-    match: lines
+    match: line
