@@ -8,9 +8,9 @@
 - name: config trunk on Distribution switches
   ios_config:
     lines:
-    - switchport trunk encapsulation dot1q
-    - switchport trunk allowed vlan 5,10,20,30,40,50,60,70,255
-    - switchport mode trunk
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan 5,10,20,30,40,50,60,70,255
+      - switchport mode trunk
   parents: "{{ item }}"
   loop: 
     - interface FastEthernet0/3
@@ -19,11 +19,11 @@
 
 - name: Assign interfaces fa0/1 - 4 to VLAN 255
   ios_config:
-    lines: 
+    lines:
     - switchport mode access
     - switchport access vlan 255
     parents: "{{ item }}"
-  loop:
+  with_items:
     - interface FastEthernet0/1
     - interface FastEthernet0/2
     - interface FastEthernet0/3
@@ -36,7 +36,7 @@
     - switchport mode access
     - switchport access vlan 10
     parents: "{{ item }}"
-  loop:
+  with_items:
     - interface FastEthernet0/5
     - interface FastEthernet0/6
     - interface FastEthernet0/7
@@ -49,7 +49,7 @@
     - switchport mode access
     - switchport access vlan 20
     parents: "{{ item }}"
-  loop:
+  with_items:
     - interface FastEthernet0/9
     - interface FastEthernet0/10
     - interface FastEthernet0/11
