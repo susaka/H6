@@ -1,5 +1,9 @@
 ---
 ## Tasks for the network device system
+- name: Set hostname
+  ios_system:
+    hostname: "{{ inventory_hostname }}"
+
 - name: SSH Version 2
   ios_config:
     lines: ip ssh version 2
@@ -56,11 +60,30 @@
     name: "{{ log_host }}"
     state: present
 
-#- name: Config Radius AAA
-#  ios_config:
-#    lines:
-#    - aaa new-model
-#    - aaa group server radius JRradius
-#    - server-private "{{ radius_host }}" auth-port 1645 acct-port 1646 key "{{ vault_radius_shared_secret }}"
-#    - ip radius source-interface "{{ dev_mang_int }}"
-#    match: none
+- name: enable aaa on switches
+  ios_config:
+    lines: aaa new-model
+  
+- name: setup radius server group
+  ios_config:
+    lines:
+    - server-private "{{ radius_host }}" auth-port 1645 acct-port 1646 key "{{ vault_radius_shared_secret }}"
+    - ip radius source-interface "{{ dev_mang_int }}"
+    parents: aaa group server radius JRradius
+
+- name: Config Radius AAA
+  ios_config:
+    lines:
+    - aaa authentication login JR_rad group JRradius local
+    - aaa authorization exec JR_rad group JRradius local if-authenticated
+    - aaa accounting exec default start-stop group JRradius
+
+- name: apply on vty lines
+  ios_config:
+    lines:
+    - authorization exec JR_rad
+    - login authentication JR_rad
+    parents: "{{ item }}"
+  loop:
+    - line vty 0 4
+    - line vty 5 15
