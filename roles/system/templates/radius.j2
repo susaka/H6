@@ -1,6 +1,6 @@
 aaa group server radius JRradius
  server-private {{ radius_host }} auth-port 1645 acct-port 1646 key {{ vault_radius_shared_secret }}
- ip radius source-interface {{ dev_mang_int }}
+ {{ radius_source }}
  !
 aaa authentication login JR_rad group JRradius local
 aaa authorization exec JR_rad group JRradius local if-authenticated
