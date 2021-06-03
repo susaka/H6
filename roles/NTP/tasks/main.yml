@@ -7,7 +7,7 @@
 
 - name: assign source interface
   ios_config:
-    lines: ntp source {{ dev_mang_int }}
+    lines: "{{ntp_source}}"
 
 - name: Set timezone
   ios_config:
