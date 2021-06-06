@@ -1,12 +1,12 @@
 ---
 
-- name: configure SNMP Access List
-  ios_config:
-    lines: access-list 42 permit 10.255.0.70
+#- name: configure SNMP Access List
+#  ios_config:
+#    lines: access-list 42 permit 10.255.0.70
 
 - name: Setup community string
   ios_config:
-    lines: snmp-server community jrbygRO RO 42
+    lines: snmp-server community jrbygRO RO
 
 - name: Enable trap config
   ios_config:
