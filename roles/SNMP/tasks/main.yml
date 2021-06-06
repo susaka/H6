@@ -20,7 +20,7 @@
 - name: Enable trap ospf for Distribution switches
   ios_config:
     lines: snmp-server enable traps ospf
-  when: inventory_hostname in groups['DisSw']
+  when: inventory_hostname in groups['DisSW']
 
 - name: Enable trap hsrp
   ios_config:
