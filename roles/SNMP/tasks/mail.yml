@@ -1,0 +1,21 @@
+---
+
+- name: configure SNMP Access List
+  ios_config:
+    lines: access-list 42 permit 10.255.0.70 0.0.0.0
+
+- name: Setup community string
+  ios_config:
+    lines: snmp-server community jrbygRO ro 42
+
+- name: Enable traps
+  ios_config:
+    lines: clock timezone CEST 1
+
+- name: Enable trap config
+  ios_config:
+    lines: snmp-server enable trpas config
+
+- name: configure SNMP collector address
+  ios_config:
+    lines: snmp-server 10.255.0.70 traps jrbygRO
