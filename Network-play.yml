@@ -22,7 +22,15 @@
   roles:
     - VLANS
   tags:
-    VLANS
+    - VLANS
+
+- name: Setup SNMP on network devices
+  hosts: Network
+  gather_facts: false
+  roles:
+    - SNMP
+  tags:
+    - SNMP
 
 - name: Save final config on Cisco devices
   hosts: Network
