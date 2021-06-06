@@ -1,38 +1,16 @@
 ---
 
-#- name: configure SNMP Access List
-#  ios_config:
-#    lines: access-list 42 permit 10.255.0.70
+- name: configure SNMP Access List
+  ios_config:
+    lines: access-list 42 permit 10.255.0.70
 
 - name: Setup community string
   ios_config:
-    lines: snmp-server community jrbygRO RO
+    lines: snmp-server community jrbygRO RO 42
 
-- name: Enable trap config
+- name: Enable trap 
   ios_config:
-    lines: snmp-server enable traps config
-
-- name: Enable trap ospf for routers
-  ios_config:
-    lines: snmp-server enable traps ospf
-  when: inventory_hostname in groups['Routers']
-  changed_when: false
-
-- name: Enable trap ospf for Distribution switches
-  ios_config:
-    lines: snmp-server enable traps ospf
-  when: inventory_hostname in groups['DisSW']
-  changed_when: false
-
-- name: Enable trap hsrp
-  ios_config:
-    lines: snmp-server enable traps hsrp
-  when: inventory_hostname in groups['DisSW']
-
-- name: Enable trap port security
-  ios_config:
-    lines: snmp-server enable traps port-security
-  when: inventory_hostname in groups['AccSW']
+    lines: snmp-server enable traps
 
 - name: Set trap source for routers
   ios_config:
