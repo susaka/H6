@@ -57,7 +57,7 @@
     - interface FastEthernet0/12
   when: inventory_hostname in groups['AccSW']
 
-  - name: DEMO - Assign interfaces fa0/13-16 to VLAN 99 on RosAccSW01
+- name: DEMO - Assign interfaces fa0/13-16 to VLAN 99 on RosAccSW01
   ios_config:
     lines: 
     - switchport mode access
