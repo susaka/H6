@@ -10,7 +10,7 @@
   ios_config:
     lines:
     - switchport trunk encapsulation dot1q
-    - switchport trunk allowed vlan 5,10,20,30,40,50,60,70,255
+    - switchport trunk allowed vlan 5,10,20,30,40,50,60,70,99,255
     - switchport mode trunk
     parents: "{{ item }}"
   with_items: 
@@ -56,6 +56,19 @@
     - interface FastEthernet0/11
     - interface FastEthernet0/12
   when: inventory_hostname in groups['AccSW']
+
+  - name: DEMO - Assign interfaces fa0/13-16 to VLAN 99 on RosAccSW01
+  ios_config:
+    lines: 
+    - switchport mode access
+    - switchport access vlan 20
+    parents: "{{ item }}"
+  with_items:
+    - interface FastEthernet0/13
+    - interface FastEthernet0/14
+    - interface FastEthernet0/15
+    - interface FastEthernet0/16
+  when: inventory_hostname in groups['RosAccSW']
 
 - name: Create vlans on Distrubations switches
   ios_config:

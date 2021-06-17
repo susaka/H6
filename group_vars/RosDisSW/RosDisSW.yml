@@ -7,3 +7,4 @@ vlans:
   Construction: { id: '50',subnet: 10.153.24.0/24,root: RosDisSW02,area: 153 }
   Engineers: { id: '60',subnet: 10.153.28.0/24,root: RosDisSW02,area: 153 }
   IoT: { id: '70',subnet: 10.153.32.0/24,root: RosDisSW02,area: 153 }
+  DEMO: { id: '99',subnet: 10.153.80.0/24,root: RosDisSW02,area: 153}

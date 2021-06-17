@@ -7,3 +7,4 @@ vlans:
   Construction: { id: 50 }
   Engineers: { id: 60 }
   IoT: { id: 70 }
+  DEMO: { id: 99 }
